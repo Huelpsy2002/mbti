@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
@@ -21,18 +23,80 @@ class mbtichar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Column(children: [
-        Padding(
-          padding: EdgeInsets.only(left: 16, top: 30),
-          child: Container(
-            width: 280,
-            height: 380,
-            decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage(imagetitlepath))),
+      body: Stack(children: [
+        Column(children: [
+          Padding(
+            padding: EdgeInsets.only(left: 36, top: 50),
+            child: Container(
+              width: 280,
+              height: 280,
+              decoration: BoxDecoration(
+                  image: DecorationImage(image: AssetImage(imagetitlepath))),
+            ),
           ),
-        ),
+          // Padding(
+          //   padding: EdgeInsets.only(top: 36, left: 4),
+          //   child: Column(children: [
+          //     Text(
+          //       mbtititle,
+          //       style: TextStyle(
+          //           color: color(),
+          //           fontSize: 35,
+          //           letterSpacing: -2,
+          //           fontFamily: 'PTMono'),
+          //     ),
+          //     SizedBox(
+          //       height: 8,
+          //     ),
+          //     Padding(
+          //       padding: EdgeInsets.only(left: 20),
+          //       child: Text(
+          //         description,
+          //         style: TextStyle(
+          //             color: Colors.grey[700],
+          //             fontSize: 20,
+          //             fontFamily: 'PTMono'),
+          //       ),
+          //     )
+          //   ]),
+          // ),
+          // SizedBox(
+          //   height: 40,
+          // ),
+          // GestureDetector(
+          //   onTap: () {
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //       return infopage(imageinfo, mbtititle, mbtiinfo);
+          //     }));
+          //   },
+          //   child: Container(
+          //     width: 70,
+          //     height: 66,
+          //     decoration: BoxDecoration(
+          //         shape: BoxShape.circle,
+          //         color: Colors.white,
+          //         border: Border.all(color: Colors.grey.shade300)),
+          //     child: Center(
+          //       child: Icon(
+          //         Icons.arrow_downward,
+          //         color: Colors.grey.shade600,
+          //         size: 28,
+          //       ),
+          //     ),
+          //   ),
+          // ),
+
+          // Expanded(
+          //   child: Container(
+          //     child: CustomPaint(
+          //       size: Size(400, (400).toDouble()),
+          //       painter: RPSCustomPainter(),
+          //     ),
+          //   ),
+          // ),
+        ]),
         Padding(
-          padding: EdgeInsets.only(top: 36, left: 10),
+          padding: EdgeInsets.only(top: 450, left: 24),
           child: Column(children: [
             Text(
               mbtititle,
@@ -46,13 +110,13 @@ class mbtichar extends StatelessWidget {
               height: 8,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 40),
+              padding: EdgeInsets.only(left: 20),
               child: Text(
                 description,
                 style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 20,
-                    fontFamily: 'PTSerif'),
+                    fontFamily: 'PTMono'),
               ),
             )
           ]),
@@ -66,30 +130,22 @@ class mbtichar extends StatelessWidget {
               return infopage(imageinfo, mbtititle, mbtiinfo);
             }));
           },
-          child: Container(
-            width: 70,
-            height: 66,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-                border: Border.all(color: Colors.grey.shade300)),
-            child: Center(
-              child: Icon(
-                Icons.arrow_downward,
-                color: Colors.grey.shade600,
-                size: 28,
+          child: Padding(
+            padding: EdgeInsets.only(top: 580, left: 146),
+            child: Container(
+              width: 70,
+              height: 66,
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
+                  border: Border.all(color: Colors.grey.shade300)),
+              child: Center(
+                child: Icon(
+                  Icons.arrow_downward,
+                  color: Colors.grey.shade600,
+                  size: 28,
+                ),
               ),
-            ),
-          ),
-        ),
-        // SizedBox(
-        //   height: 10,
-        // ),
-        Expanded(
-          child: Container(
-            child: CustomPaint(
-              size: Size(400, (400).toDouble()),
-              painter: RPSCustomPainter(),
             ),
           ),
         ),

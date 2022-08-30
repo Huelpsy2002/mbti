@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, camel_case_types, prefer_final_fields, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:mbti/models/backgroundpaint.dart';
@@ -18,6 +18,7 @@ class _homescreenState extends State<homescreen> {
   int _currentpage = 0;
   @override
   void initState() {
+    // ignore: todo
     // TODO: implement initState
     super.initState();
     _pageController =
@@ -26,6 +27,7 @@ class _homescreenState extends State<homescreen> {
 
   @override
   void dispose() {
+    // ignore: todo
     // TODO: implement dispose
     super.dispose();
     _pageController.dispose();

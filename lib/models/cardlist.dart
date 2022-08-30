@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, camel_case_types
+
 class DataModel {
   final String imagepath;
   final String title;
@@ -94,7 +96,7 @@ class description {
 }
 
 List<description> disciption_list = [
-  description('serve a greater purpose in life. Thoughtful and idealistic'),
+  description('Thoughtful and idealistic'),
   description('Extraverted, Intuitive\nFeeling,and Prospecting'),
   description('Extraverted, Intuitive\nThinking,and Judging'),
   description('Extraverted, Intuitive\nThinking,and Prospecting'),
