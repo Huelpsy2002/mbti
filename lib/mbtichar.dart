@@ -52,7 +52,7 @@ class mbtichar extends StatelessWidget {
                 style: TextStyle(
                     color: Colors.grey[700],
                     fontSize: 20,
-                    fontFamily: 'PTMono'),
+                    fontFamily: 'PTSerif'),
               ),
             )
           ]),
