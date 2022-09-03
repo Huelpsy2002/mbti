@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-I have made an app that contains an mbti information 
+I have made an app that contains an mbti information. 
 the Myers–Briggs Type Indicator (MBTI) is an introspective self-report questionnaire indicating differing psychological preferences in how people perceive the world and make decisions. The test attempts to assign four categories: introversion or extraversion, sensing or intuition, thinking or feeling, judging or perceiving. One letter from each category is taken to produce a four-letter test result, such as "INTJ" or "ESFP".
 this app just contains the info about every personality type.
 I'll add the test in another update.
