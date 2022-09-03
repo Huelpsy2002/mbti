@@ -9,7 +9,8 @@ class infopage extends StatelessWidget {
   String imagepah;
   String title;
   String mbtiinfo;
-  infopage(this.imagepah, this.title, this.mbtiinfo);
+  var typecolor;
+  infopage(this.imagepah, this.title, this.mbtiinfo, this.typecolor);
 
   Color color() {
     return Color.fromARGB(255, 68, 117, 69);
@@ -23,10 +24,8 @@ class infopage extends StatelessWidget {
         Container(
           margin: EdgeInsets.all(10),
           width: 340,
-          height: 190,
+          height: 200,
           decoration: BoxDecoration(
-
-              // color: Colors.grey,
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
                   image: ExactAssetImage(imagepah), fit: BoxFit.fill)),
@@ -101,7 +100,7 @@ class infopage extends StatelessWidget {
           child: Text(
             "$title Personality",
             style: TextStyle(
-                color: color(),
+                color: typecolor,
                 fontSize: 35,
                 letterSpacing: -2,
                 fontFamily: 'PTMono'),

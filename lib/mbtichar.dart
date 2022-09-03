@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mbti/models/cardlist.dart';
 import 'dart:ui' as ui;
 
 import 'models/infopage.dart';
@@ -21,12 +22,36 @@ class mbtichar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late Color typecolor;
+    var mbtitype = {
+      "Analysts": ["Architect", "Logician", "Commander", "Debater"],
+      "Diplomats": ["Advocate", "Mediator", "Protagonist", "Campaigner"],
+      "Sentinels": ["Logistician", "Defender", "Executive", "Consul"],
+      "Explorers": ["Virtuoso", "Adventurer", "Entrepreneur", "Entertainer"]
+    };
+
+    mbtitype.forEach((key, value) {
+      for (var item in value) {
+        if (mbtititle == item) {
+          if (key == "Analysts") {
+            typecolor = Color.fromARGB(255, 121, 84, 138);
+          } else if (key == "Diplomats") {
+            typecolor = Color.fromARGB(255, 32, 117, 50);
+          } else if (key == "Sentinels") {
+            typecolor = Color.fromARGB(255, 32, 123, 146);
+          } else {
+            typecolor = Color.fromARGB(255, 143, 134, 10);
+          }
+        }
+      }
+    });
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(children: [
         Column(children: [
           Padding(
-            padding: EdgeInsets.only(left: 36, top: 50),
+            padding: EdgeInsets.only(left: 24, top: 140),
             child: Container(
               width: 280,
               height: 280,
@@ -34,83 +59,33 @@ class mbtichar extends StatelessWidget {
                   image: DecorationImage(image: AssetImage(imagetitlepath))),
             ),
           ),
-          // Padding(
-          //   padding: EdgeInsets.only(top: 36, left: 4),
-          //   child: Column(children: [
-          //     Text(
-          //       mbtititle,
-          //       style: TextStyle(
-          //           color: color(),
-          //           fontSize: 35,
-          //           letterSpacing: -2,
-          //           fontFamily: 'PTMono'),
-          //     ),
-          //     SizedBox(
-          //       height: 8,
-          //     ),
-          //     Padding(
-          //       padding: EdgeInsets.only(left: 20),
-          //       child: Text(
-          //         description,
-          //         style: TextStyle(
-          //             color: Colors.grey[700],
-          //             fontSize: 20,
-          //             fontFamily: 'PTMono'),
-          //       ),
-          //     )
-          //   ]),
-          // ),
-          // SizedBox(
-          //   height: 40,
-          // ),
-          // GestureDetector(
-          //   onTap: () {
-          //     Navigator.push(context, MaterialPageRoute(builder: (context) {
-          //       return infopage(imageinfo, mbtititle, mbtiinfo);
-          //     }));
-          //   },
-          //   child: Container(
-          //     width: 70,
-          //     height: 66,
-          //     decoration: BoxDecoration(
-          //         shape: BoxShape.circle,
-          //         color: Colors.white,
-          //         border: Border.all(color: Colors.grey.shade300)),
-          //     child: Center(
-          //       child: Icon(
-          //         Icons.arrow_downward,
-          //         color: Colors.grey.shade600,
-          //         size: 28,
-          //       ),
-          //     ),
-          //   ),
-          // ),
-
-          // Expanded(
-          //   child: Container(
-          //     child: CustomPaint(
-          //       size: Size(400, (400).toDouble()),
-          //       painter: RPSCustomPainter(),
-          //     ),
-          //   ),
-          // ),
+          Expanded(
+            child: Container(
+              child: CustomPaint(
+                size: Size(400, (400).toDouble()),
+                painter: RPSCustomPainter(typecolor),
+              ),
+            ),
+          ),
         ]),
         Padding(
-          padding: EdgeInsets.only(top: 450, left: 24),
-          child: Column(children: [
+          padding: EdgeInsets.only(top: 250, left: 40),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               mbtititle,
               style: TextStyle(
-                  color: color(),
+                  color: typecolor,
                   fontSize: 35,
                   letterSpacing: -2,
                   fontFamily: 'PTMono'),
             ),
+            //debater,enterprentur,vertouso
             SizedBox(
               height: 8,
             ),
+
             Padding(
-              padding: EdgeInsets.only(left: 20),
+              padding: EdgeInsets.only(left: 14),
               child: Text(
                 description,
                 style: TextStyle(
@@ -127,11 +102,11 @@ class mbtichar extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return infopage(imageinfo, mbtititle, mbtiinfo);
+              return infopage(imageinfo, mbtititle, mbtiinfo, typecolor);
             }));
           },
           child: Padding(
-            padding: EdgeInsets.only(top: 580, left: 146),
+            padding: EdgeInsets.only(top: 618, left: 148),
             child: Container(
               width: 70,
               height: 66,
@@ -154,54 +129,30 @@ class mbtichar extends StatelessWidget {
   }
 }
 
-// class CurvedPainterd extends CustomPainter {
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     var paint = Paint()
-//       ..color = Color.fromARGB(255, 234, 243, 236)
-//       ..strokeWidth = 15;
-
-//     var path = Path();
-
-//     path.moveTo(0, size.height * 0.75);
-//     path.quadraticBezierTo(size.width * 0.25, size.height * 0.1,
-//         size.width * 0.5, size.height * 0.3);
-//     path.quadraticBezierTo(size.width * 0.75, size.height * 0.4,
-//         size.width * 1.0, size.height * 0.3);
-//     path.lineTo(size.width, size.height);
-//     path.lineTo(0, size.height);
-
-//     canvas.drawPath(path, paint);
-//   }
-
-//   @override
-//   bool shouldRepaint(CustomPainter oldDelegate) {
-//     return true;
-//   }
-// }
 class RPSCustomPainter extends CustomPainter {
+  var typecolor;
+  RPSCustomPainter(this.typecolor);
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0 = Paint()
-      ..color = Color.fromARGB(255, 234, 243, 236)
+      ..color = typecolor
       ..style = PaintingStyle.fill
       ..strokeWidth = 1.0;
 
     Path path0 = Path();
-    path0.moveTo(0, size.height * 0.2120000);
+    path0.moveTo(0, size.height * 0.4278250);
     path0.cubicTo(
-        size.width * 0.3156250,
-        size.height * 0.6445000,
-        size.width * 0.3556250,
-        size.height * 0.6670000,
-        size.width * 0.4787500,
-        size.height * 0.6800000);
-    path0.quadraticBezierTo(size.width * 0.6056250, size.height * 0.6875000,
-        size.width, size.height * 0.4300000);
-    path0.lineTo(size.width, size.height);
+        size.width * 0.3470000,
+        size.height * 0.7994500,
+        size.width * 0.6753000,
+        size.height * 0.8261750,
+        size.width,
+        size.height * 0.4210000);
+    path0.quadraticBezierTo(size.width * 1.0195750, size.height * 0.5461750,
+        size.width, size.height);
     path0.lineTo(0, size.height);
-    path0.quadraticBezierTo(
-        0, size.height * 0.8030000, 0, size.height * 0.2120000);
+    path0.quadraticBezierTo(size.width * -0.0160000, size.height * 0.8009500, 0,
+        size.height * 0.4278250);
     path0.close();
 
     canvas.drawPath(path0, paint0);

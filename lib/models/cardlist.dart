@@ -96,7 +96,7 @@ class description {
 }
 
 List<description> disciption_list = [
-  description('Thoughtful and idealistic'),
+  description('Extraverted, Intuitive\nnFeeling,and Judging'),
   description('Extraverted, Intuitive\nFeeling,and Prospecting'),
   description('Extraverted, Intuitive\nThinking,and Judging'),
   description('Extraverted, Intuitive\nThinking,and Prospecting'),
@@ -113,3 +113,12 @@ List<description> disciption_list = [
   description('Introverted, Observant\nThinking,and Judging'),
   description('Introverted, Observant\nThinking,and Prospecting'),
 ];
+
+// var Analysts = ["Architect", "Logician", "Commander", "Debater"];
+
+// var Diplomats = ["Advocate", "Mediator", "Protagonist", "Campaigner"];
+
+// var Sentinels = ["Logistician", "Defender", "Executive", "Consul"];
+
+// var Explorers = ["Virtuoso", "Adventurer", "Entrepreneur", "Entertainer"];
+
